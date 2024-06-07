@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <h1>ROCK PAPER SCISSORS</h1>
+    <p>Build using HTML, CSS and JAVASCRIPT</p>
+
+    <div class="game-area">
+      <h2>SELECT YOUR MOVE</h2>
+      <div class="move-btns">
+        <button onclick="generatingComputerMove(); compareMove('rock');">
+          <img src="rock-emoji.png" alt="rock-emoji" />
+        </button>
+        <button onclick="generatingComputerMove(); compareMove('paper');">
+          <img src="paper-emoji.png" alt="paper-emoji" />
+        </button>
+        <button onclick="generatingComputerMove(); compareMove('scissors');">
+          <img src="scissors-emoji.png" alt="scissors-emoji" />
+        </button>
+      </div>
+      <article>
+        <h3 class="move-output"></h3>
+        <p class="result"></p>
+      </article>
+      <div class="score">
+        <span>Win: 0</span><span>Draw: 0</span><span>Lose: 0</span>
+      </div>
+      <button
+        class="reset-btn"
+        onclick=" 
+        scoreUpdate.draw = 0;
+        scoreUpdate.win = 0;
+        scoreUpdate.lose = 0;
+        scoreDraw.innerText = `Draw: ${scoreUpdate.draw}`;
+        scoreWin.innerText = `Win: ${scoreUpdate.win}`;
+        scoreLose.innerText = `Lose: ${scoreUpdate.lose}`;
+      localStorage.removeItem('score');"
+      >
+        <img src="reset.png" alt="" />
+      </button>
+    </div>
+  </body>
+</html>
