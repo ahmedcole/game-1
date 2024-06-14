@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- open graph socialmedia card -->
+    <meta property="og:title" content="Ahmed Rock Paper Scissors game" />
+    <meta
+      property="og:description"
+      content="This project is a rock paper scissors game build using htnl css and javascipt"
+    />
+    <meta property="og:image" content="ahmed.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="const_deedev" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css" />
     <script src="game.js" defer></script>
@@ -31,19 +41,14 @@
       <div class="score">
         <span>Win: 0</span><span>Draw: 0</span><span>Lose: 0</span>
       </div>
-      <button
-        class="reset-btn"
-        onclick=" 
-        scoreUpdate.draw = 0;
-        scoreUpdate.win = 0;
-        scoreUpdate.lose = 0;
-        scoreDraw.innerText = `Draw: ${scoreUpdate.draw}`;
-        scoreWin.innerText = `Win: ${scoreUpdate.win}`;
-        scoreLose.innerText = `Lose: ${scoreUpdate.lose}`;
-      localStorage.removeItem('score');"
-      >
-        <img src="reset.png" alt="" />
-      </button>
+      <div class="btn-game">
+        <button class="reset-btn" onclick="resetGame()">
+          <img src="reset.png" alt="" />
+        </button>
+        <button class="auto-play-btn" onclick="autoPlayGame()">
+          Auto Play
+        </button>
+      </div>
     </div>
   </body>
 </html>

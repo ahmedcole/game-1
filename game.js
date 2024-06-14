@@ -13,11 +13,9 @@ const scoreUpdate = JSON.parse(localStorage.getItem("score")) || {
 
 // generate a random number for computer move
 
-let computerMove;
-
 function generatingComputerMove() {
   const randomNumber = Math.floor(Math.random() * 3);
-
+  let computerMove = "";
   if (randomNumber === 0) {
     computerMove = "rock";
   } else if (randomNumber === 1) {
@@ -25,11 +23,14 @@ function generatingComputerMove() {
   } else {
     computerMove = "scissors";
   }
+  return computerMove;
 }
 
 // generatingComputerMove();
 
 function compareMove(userMove) {
+  const computerMove = generatingComputerMove();
+
   if (userMove === computerMove) {
     moveOutput.innerHTML = "Draw!";
     result.innerHTML = `You <img src="${userMove}-emoji.png" />
@@ -56,3 +57,31 @@ function compareMove(userMove) {
 scoreDraw.innerText = `Draw: ${scoreUpdate.draw}`;
 scoreWin.innerText = `Win: ${scoreUpdate.win}`;
 scoreLose.innerText = `Lose: ${scoreUpdate.lose}`;
+
+function resetGame() {
+  scoreUpdate.draw = 0;
+  scoreUpdate.win = 0;
+  scoreUpdate.lose = 0;
+  scoreDraw.innerText = `Draw: ${scoreUpdate.draw}`;
+  scoreWin.innerText = `Win: ${scoreUpdate.win}`;
+  scoreLose.innerText = `Lose: ${scoreUpdate.lose}`;
+  localStorage.removeItem("score");
+}
+
+// auto play
+
+let autoPlay = false;
+let intervalTime;
+
+function autoPlayGame() {
+  if (!autoPlay) {
+    intervalTime = setInterval(() => {
+      const autoMove = generatingComputerMove();
+      compareMove(autoMove);
+    }, 3000);
+    autoPlay = true;
+  } else {
+    clearInterval(intervalTime);
+    autoPlay = false;
+  }
+}
